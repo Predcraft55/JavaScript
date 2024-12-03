@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>calculatrice</title>
+</head>
+<body>
+    <div class="calculatrice">
+        <div class="display">
+            <p id="display">0</p>
+        </div>
+
+        <div class="buttons">
+            <!-- (.btn>{$})*9 -->            
+            <div class="btn btn-display">7</div>
+            <div class="btn btn-display">8</div>
+            <div class="btn btn-display">9</div>
+            <div class="btn operator btn-display">/</div>
+
+            <div class="btn btn-display">4</div>
+            <div class="btn btn-display">5</div>
+            <div class="btn btn-display">6</div>
+            <div class="btn operator btn-display">*</div>
+
+            <div class="btn btn-display">1</div>
+            <div class="btn btn-display">2</div>
+            <div class="btn btn-display">3</div>
+            <div class="btn operator btn-display">-</div>
+
+            <div class="btn btn-display">0</div>
+            <div class="btn btn-display">.</div>
+            <div class="btn operator btn-display">+</div>
+            <div class="btn operator" id="equal">=</div>
+
+            <div class="btn clear" id="clear">C</div>
+
+
+        </div>
+    </div>
+
+<script>
+    const display = document.getElementById('display');
+    const btnDisplay = document.querySelectorAll('.btn-display');
+    const clear = document.getElementById('clear')
+    const equal = document.getElementById('equal')
+
+    let calcul = "";
+    // Ici on n'a pas le droit de mettre ces caractères
+    /// En première position sur la string de calcul
+    // Ex : /9+5, *7-8 ( cela n'a aucun sens )
+    const interdiction = ["/", "*", "0", "."]
+    const operator = ['+', "*", "/", "."]
+
+
+    clear.addEventListener('click', function() {
+        calcul = "";
+        display.innerHTML = "0";
+    })
+
+    equal.addEventListener('click', function() {
+        calculToString = eval(calcul);
+        if(calculToString === Infinity){
+            display.innerHTML = "SYNTAX ERROR";
+            calcul = ""
+        }else{
+            calcul = calculToString.toString()
+            display.innerHTML = calcul;
+        }
+
+    })
+
+
+    // Boucle forEach
+
+
+
+
+    btnDisplay.forEach( button => {
+        button.addEventListener('click', function() {
+            // On va faire une boucle pour verifier chaques
+            // Valeur interdites
+            let value = button.innerHTML
+
+            console.log(value)
+            if(operator.includes(value) && calcul.length === 0){
+                display.innerHTML = "0"
+            }else{
+                console.log(calcul.charAt(calcul.length - 1))
+                if(operator.includes(calcul.charAt(calcul.length - 1))){
+                    if(!operator.includes(value))
+                    {
+                        calcul += value;
+                        display.innerHTML = calcul
+                    }
+                }else {
+                    calcul += value;
+                    display.innerHTML = calcul
+                }
+
+            }
+
+            // JE NE VEUX PAS DUPLIQUER LES OPERATEURS 
+            // MATHEMATIQUE
+
+            // VERIFIER QUE LE DERNIER CARACTERE N'est PAS
+            // UN OPERATEUR
+
+            // SI OUI, ON AJOUTE RIEN
+            // SI NON , ON A LE DROIT D'AJOUTER AU CALCUL
+
+            // calcul[lenght-1] permet d'obtenir le dernier élément du tableau
+            // ici on compare le dernier élément du tableau avec dernier touche cliquer
+            // on verifie que ce n'est pas deux operateur d'affiler ( sauf -)
+
+        })
+    })
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

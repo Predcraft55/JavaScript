@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "clock";
+    src: url("alarmclock.ttf");
+}
+
+#display {
+    font-family: "clock";
+}
+
+div.buttons div{
+    user-select: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.calculatrice {
+    width: 300px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+#display {
+    width: 100%;
+    background: none;
+    border:none;
+    color: white;
+    font-size: 2rem;
+    text-align: right;
+    padding-right: 0.4em;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn {
+    width: 25%;
+    padding: 20px;
+    background-color: #444;
+    color: white;
+    font-size: 1.5rem;
+    border: 1px solid #333;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn.operator {
+    background-color: #ff9500;
+}
+
+.btn.clear {
+    background-color: #d9534f;
+    width: 100%;
+    color: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.btn.operator:hover {
+    background-color: #ffb84d;
+}
+
+.btn.clear:hover {
+    background-color: #c9302c;
+}

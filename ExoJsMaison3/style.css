@@ -1,0 +1,92 @@
+@font-face {
+    font-family: "clock";
+    src: url(fonts/alarmclock.ttf);
+}
+
+.fonts {
+    font-family: "clock";
+    
+}
+
+
+
+
+.clock-container {
+    height: 100vh;
+    position: relative;
+}
+
+.clock {
+    font-family: "clock";
+    font-size: 10em;
+    background-image: 
+        linear-gradient(to right, rgb(255, 0, 0), rgb(100, 0, 0), rgb(255, 0, 0),rgb(100, 0, 0), rgb(255, 0, 0)); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+    animation: rainbow-animation 500s linear infinite;
+    position: relative;
+}
+
+.clock::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right,  rgb(255, 0, 0), rgb(100, 0, 0), rgb(255, 0, 0),rgb(100, 0, 0), rgb(255, 0, 0)); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(20px);
+    animation: rainbow-animation 500s linear infinite;
+}
+
+.neon-text {
+   
+    background-image: 
+        linear-gradient(to right, rgb(255, 0, 0), rgb(100, 0, 0), rgb(255, 0, 0),rgb(100, 0, 0), rgb(255, 0, 0)); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+    animation: rainbow-animation 1500s linear infinite;
+    position: relative;
+  
+}
+
+.neon-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right,rgb(255, 0, 0), rgb(100, 0, 0), rgb(255, 0, 0),rgb(100, 0, 0), rgb(255, 0, 0)); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(5px);
+    animation: rainbow-animation 1500s linear infinite;
+}
+
+@keyframes rainbow-animation {
+    to {
+        background-position: 4500vh;
+    }
+}
+
+#allarm p { 
+    animation: blink-animation 1s infinite; 
+}
+
+@keyframes blink-animation { 
+    0%, 100% { opacity: 1; } 
+    50% { opacity: 0; } 
+}
+
+
